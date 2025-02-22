@@ -59,13 +59,14 @@ export const useCurrencySwapperForm = ({
   };
 
   const handleSearchFromCurr = (value: string) => {
-    setSearchFromCurr(value);
+    const alphabetOnly = value.replace(/[^a-zA-Z]/g, ''); 
+    setSearchFromCurr(alphabetOnly);
   };
 
   const handleSearchToCurr = (value: string) => {
-    setSearchToCurr(value);
+    const alphabetOnly = value.replace(/[^a-zA-Z]/g, ''); 
+    setSearchToCurr(alphabetOnly);
   };
-
   const handleFromAmountChange = useCallback(
     (value: string) => {
       if (!/^\d*\.?\d*$/.test(value)) return "";

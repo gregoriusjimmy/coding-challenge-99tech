@@ -55,6 +55,7 @@ export const SelectSearch = forwardRef<HTMLInputElement, SelectSearchProps>(
     const handleSearch = useCallback(
       (e: React.ChangeEvent<HTMLInputElement>) => {
         onSearch(e.target.value);
+        setOpenOption(true);
       },
       [onSearch],
     );
