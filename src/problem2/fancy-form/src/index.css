@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+  font-size: 14px;
+
+  @screen 2xl {
+    font-size: 18px;
+  }
+}
+
+:root {
+  --primary-900: #0b2d6f;
+  --primary-800: #103f9e;
+  --primary-700: #134cbe;
+  --primary-600: #1657da;
+  --primary-500: #2365e9;
+  --primary-400: 107, 151, 240;
+  --primary-300: #9ebbf5;
+  --primary-200: #c3d5f9;
+  --primary-100: #e3ecfc;
+  --primary-50: #f1f5fe;
+
+  --grey7-900: #000000;
+  --grey7-800: #1a1a1e;
+  --grey7-700: #1a1a1e;
+  --grey7-600: #1a1a1e;
+  --grey7-500: #222226;
+  --grey7-400: #7e7e8b;
+  --grey7-300: #acacb4;
+  --grey7-200: #ccccd1;
+  --grey7-100: #e7e7e9;
+  --grey7-50: #f4f4f5;
+
+  --hover: #131a1f;
+  --hover2: 23, 33, 40;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.border-animation {
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+.border-animation::after,
+.border-animation::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    transparent,
+    var(--primary-500)
+  );
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  padding: 1rem;
+  border-radius: 12px;
+  animation: 3s spin-border linear infinite;
+}
+
+.border-animation::before {
+  border-radius: 12px;
+  filter: blur(1.5rem);
+  opacity: 1;
+}
+
+@keyframes spin-border {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
